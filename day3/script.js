@@ -1,50 +1,73 @@
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+// Map
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-const evenNumbers = numbers.filter(function (number) {
-  return number % 2 === 0;
-});
+const doubledNumbers = numbers.map((number) => number * 2);
+console.log(doubledNumbers);
 
-// Short version
-const evenNumbers2 = numbers.filter((number) => number % 2 === 0);
-
-// Same with forEach
-const evenNumbers3 = [];
+// Tương tự với forEach
+const doubledNumbers2 = [];
 numbers.forEach((number) => {
-  if (number % 2 === 0) {
-    evenNumbers.push(number);
-  }
+  doubledNumbers2.push(number * 2);
 });
 
 const companies = [
-    { name: 'Company One', category: 'Finance', start: 1981, end: 2004 },
-    { name: 'Company Two', category: 'Retail', start: 1992, end: 2008 },
-    { name: 'Company Three', category: 'Auto', start: 1999, end: 2007 },
-    { name: 'Company Four', category: 'Retail', start: 1989, end: 2010 },
-    { name: 'Company Five', category: 'Technology', start: 2009, end: 2014 },
-    { name: 'Company Six', category: 'Finance', start: 1987, end: 2010 },
-    { name: 'Company Seven', category: 'Auto', start: 1986, end: 1996 },
-    { name: 'Company Eight', category: 'Technology', start: 2011, end: 2016 },
-    { name: 'Company Nine', category: 'Retail', start: 1981, end: 1989 },
-  ];
-  
-  // Get only retail companies
-  const retailCompanies = companies.filter(
-    (company) => company.category === 'Retail'
-  );
-  // console.log(retailCompanies);
-  
-  // Get companies that started in or after 1980 and ended in or before 2005
-  const earlyCompanies = companies.filter(
-    (company) => company.start >= 1980 && company.end <= 2005
-  );
-  // console.log(earlyCompanies);
-  
-  // Get companies that lasted 10 years or more
-  const longCompanies = companies.filter(
-    (company) => company.end - company.start >= 10
-  );
-  
-  console.log(longCompanies);
+  { name: 'Company One', category: 'Finance', start: 1981, end: 2004 },
+  { name: 'Company Two', category: 'Retail', start: 1992, end: 2008 },
+  { name: 'Company Three', category: 'Auto', start: 1999, end: 2007 },
+  { name: 'Company Four', category: 'Retail', start: 1989, end: 2010 },
+  { name: 'Company Five', category: 'Technology', start: 2009, end: 2014 },
+  { name: 'Company Six', category: 'Finance', start: 1987, end: 2010 },
+  { name: 'Company Seven', category: 'Auto', start: 1986, end: 1996 },
+  { name: 'Company Eight', category: 'Technology', start: 2011, end: 2016 },
+  { name: 'Company Nine', category: 'Retail', start: 1981, end: 1989 },
+];
+
+// Tạo một loạt tên công ty
+const companyNames = companies.map((company) => company.name);
+console.log(companyNames);
+
+// Tạo một mảng chỉ có công ty và danh mục
+const companyInfo = companies.map((company) => {
+  return {
+    name: company.name,
+    category: company.category,
+  };
+});
+console.log(companyInfo);
+
+// Tạo mảng đối tượng có tên và độ dài của từng công ty theo năm
+const companyYears = companies.map((company) => {
+  return {
+    name: company.name,
+    length: company.end - company.start + ' years',
+  };
+});
+
+console.log(companyYears);
+
+// Phương pháp bản đồ chuỗi
+const squareAndDouble = numbers
+  .map((number) => Math.sqrt(number))
+  .map((sqrt) => sqrt * 2);
+
+const squareAndDouble2 = numbers
+  .map(function (number) {
+    return Math.sqrt(number);
+  })
+  .map(function (sqrt) {
+    return sqrt * 2;
+  })
+  .map(function (sqrtDoubled) {
+    return sqrtDoubled * 3;
+  });
+
+// Xâu chuỗi các phương pháp khác nhau
+const evenDouble = numbers
+  .filter((number) => number % 2 === 0)
+  .map((number) => number * 2);
+
+console.log(evenDouble);
+
 
 
 
